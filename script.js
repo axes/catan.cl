@@ -15,6 +15,11 @@ function createHex(type = "stone") {
     hex.style.width = HEX_W + "px";
     hex.style.height = HEX_H + "px";
 
+    // borde 3D
+    const edge = document.createElement("div");
+    edge.className = "edge";
+    hex.appendChild(edge);
+
     wrap.appendChild(hex);
     return wrap;
 }
@@ -31,75 +36,77 @@ function getHexSector(dx, dy) {
 }
 
 function applyHexSectorEffects(sector, hex, wrap) {
-    let tiltX = 0, tiltY = 0;     // rotaciones
-    let shadowX = 0, shadowY = 0; // sombra proyectada
-    let lightX = "50%", lightY = "40%"; // luz
+    let tiltX = 0, tiltY = 0;
+    let shadowX = 0, shadowY = 0;
+    let lightX = "50%", lightY = "10%";
+    let depth = 18; // volumen
 
     switch (sector) {
         case "right":
-            tiltY = -15;
-            shadowX = -25;
+            tiltY = -10;
+            shadowX = -45;
             lightX = "80%";
+            lightY = "50%";
             break;
 
         case "bottom-right":
-            tiltX = 12;
-            tiltY = -12;
-            shadowX = -20;
-            shadowY = -20;
-            lightX = "75%";
-            lightY = "75%";
+            tiltX = 14;
+            tiltY = -14;
+            shadowX = -35;
+            shadowY = -35;
+            lightX = "80%";
+            lightY = "85%";
             break;
 
         case "bottom-left":
-            tiltX = 12;
-            tiltY = 12;
-            shadowX = 20;
-            shadowY = -20;
-            lightX = "25%";
-            lightY = "75%";
+            tiltX = 14;
+            tiltY = 14;
+            shadowX = 35;
+            shadowY = -35;
+            lightX = "20%";
+            lightY = "80%";
             break;
 
         case "left":
-            tiltY = 15;
-            shadowX = 25;
+            tiltY = 10;
+            shadowX = 45;
             lightX = "20%";
+            lightY = "50%";
             break;
 
         case "top-left":
-            tiltX = -12;
-            tiltY = 12;
-            shadowX = 20;
-            shadowY = 20;
-            lightX = "25%";
-            lightY = "25%";
+            tiltX = -14;
+            tiltY = 14;
+            shadowX = 35;
+            shadowY = 35;
+            lightX = "20%";
+            lightY = "20%";
             break;
 
         case "top-right":
-            tiltX = -12;
-            tiltY = -12;
-            shadowX = -20;
-            shadowY = 20;
-            lightX = "75%";
-            lightY = "25%";
+            tiltX = -14;
+            tiltY = -14;
+            shadowX = -35;
+            shadowY = 35;
+            lightX = "80%";
+            lightY = "20%";
             break;
     }
 
-    // aplicar transform
-    hex.style.transform =
-        `rotateX(${tiltX}deg)
-         rotateY(${tiltY}deg)
-         scale(1.05)`;
+    hex.style.transform = `
+        rotateX(${tiltX}deg)
+        rotateY(${tiltY}deg)
+        translateZ(${depth}px)
+        scale(1.06)
+    `;
 
-    // sombra
-    wrap.style.filter =
-        `drop-shadow(${shadowX}px ${shadowY}px 35px rgba(0,0,0,0.45))`;
-
-    // luz
     hex.style.setProperty("--light-x", lightX);
     hex.style.setProperty("--light-y", lightY);
-}
 
+    wrap.style.filter = `
+        drop-shadow(${shadowX}px ${shadowY}px 50px rgba(0,0,0,0.55))
+    `;
+}
 
 // ------------ FILAS -------------
 
@@ -256,7 +263,7 @@ function setupHoverTilt() {
         if (activeHex) {
             activeHex.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
             activeHex.style.setProperty("--light-x", "50%");
-            activeHex.style.setProperty("--light-y", "30%");
+            activeHex.style.setProperty("--light-y", "10%");
         }
 
         if (activeWrap) {

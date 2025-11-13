@@ -34,41 +34,45 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    filter: none;
-    transition: filter 0.3s ease, transform 0.3s ease;
-    /* transition: filter 2s ease, transform 2s ease; */
-}
+    pointer-events: auto;
 
+    /* claves 3D reales */
+    perspective: 900px;
+    transform-style: preserve-3d;
+
+    transition: filter 0.25s ease, transform 0.25s ease;
+}
 
 .hexagon {
     position: relative;
     width: 500px;
     height: 500px;
 
-    clip-path: polygon(50% 0%,
-            93% 25%,
-            93% 75%,
-            50% 100%,
-            7% 75%,
-            7% 25%);
-
-    /* valor por defecto */
-    --light-x: 50%;
-    --light-y: 30%;
+    clip-path: polygon(
+        50% 0%,
+        93% 25%,
+        93% 75%,
+        50% 100%,
+        7% 75%,
+        7% 25%
+    );
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
-    transform-origin: center center;
-    transform: rotateX(0deg) rotateY(0deg) scale(1);
-    /* transition: transform 0.12s ease-out; */
-    transition: transform 0.12s ease-out;
+    /* importante para 3D */
+    transform-style: preserve-3d;
 
-    pointer-events: auto;
-    /* clave para que reciba hover */
+    /* Agregar luces al iniciar  */
+    --light-x: 50%;
+    --light-y: 10%;
+
+    /* volumen al centro */
+    transform: translateZ(0px) rotateX(0deg) rotateY(0deg) scale(1);
+
+    transition: transform 0.15s ease-out;
 }
-
 
 
 .hexagon::after {
@@ -78,16 +82,15 @@ body {
     clip-path: inherit;
     pointer-events: none;
 
-
-
-    background: radial-gradient(circle at var(--light-x) var(--light-y),
-            rgba(255, 255, 255, 0.35),
-            rgba(255, 255, 255, 0) 60%);
+    /* luz fuerte pero definida */
+    background: radial-gradient(
+        circle at var(--light-x) var(--light-y),
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0) 48%
+    );
 
     transition: background 0.12s ease-out;
-    /* transition: background 2s ease-out; */
 }
-
 
 
 .hexagon::before {
@@ -115,6 +118,16 @@ body {
         inset 0px 6px 12px rgba(255, 255, 255, 0.25);
 }
 
+/* Borde 3D tipo loseta */
+.hexagon .edge {
+    position: absolute;
+    inset: 0;
+    clip-path: inherit;
+    background: rgba(230, 230, 230, 0.04);
+    transform: translateZ(-12px);
+    filter: brightness(0.1);
+    border-radius: 10px;
+}
 
 /* FILAS */
 .first-row,
