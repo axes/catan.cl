@@ -20,8 +20,11 @@ function createFirstRow() {
     row.className = "first-row";
     container.appendChild(row);
 
+    // Aquí puedes asignar diferentes tipos/texturas a los hexágonos si lo deseas
+    const resources = ["wood", "wheat", "brick", "sheep", "stone"];
+
     for (let i = 0; i < 5; i++) {
-        const hex = createHex();
+        const hex = createHex(resources[i]);
         hex.style.left = `${startX + i * SPACING}px`;
         hex.style.top = `0px`;
         row.appendChild(hex);
@@ -43,8 +46,10 @@ function createSecondRow() {
     row.className = "second-row";
     container.appendChild(row);
 
+    const res2 = ["brick", "stone", "wheat", "wood"];
+
     for (let i = 0; i < 4; i++) {
-        const hex = createHex();
+        const hex = createHex(res2[i]);
         hex.style.left = `${start1 + offsetX + i * SPACING}px`;
         hex.style.top = `${offsetY}px`;
         row.appendChild(hex);
@@ -72,8 +77,10 @@ function createThirdRow() {
     row.className = "third-row";
     container.appendChild(row);
 
+    const res3 = ["desert", "stone", "brick"];
+
     for (let i = 0; i < 3; i++) {
-        const hex = createHex();
+        const hex = createHex(res3[i]);
         hex.style.left = `${startX + i * spacing}px`;
         hex.style.top = `${offsetY}px`;
 
@@ -83,9 +90,17 @@ function createThirdRow() {
 
 
 // --------- CREAR HEXÁGONO ----------
-function createHex() {
+// function createHex() {
+//     const hex = document.createElement("div");
+//     hex.className = "hexagon color-stone";  // aquí asignaremos texturas después
+//     hex.style.width = HEX_W + "px";
+//     hex.style.height = HEX_H + "px";
+//     return hex;
+// }
+
+function createHex(type = "stone") {
     const hex = document.createElement("div");
-    hex.className = "hexagon color-stone";  // aquí asignaremos texturas después
+    hex.className = `hexagon hex-${type}`;
     hex.style.width = HEX_W + "px";
     hex.style.height = HEX_H + "px";
     return hex;

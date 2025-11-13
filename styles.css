@@ -62,6 +62,14 @@ body {
     background-color: #888;
 }
 
+/* TEXTURAS SIMULADAS CON COLORES PROVISORIOS */
+.hex-desert  { background-color: #e4d6b0; }   /* arena pálida */
+.hex-wood    { background-color: #2f6b3f; }   /* bosque oscuro */
+.hex-wheat   { background-color: #ffce45; }   /* trigo dorado */
+.hex-sheep   { background-color: #8cd19c; }   /* pradera verde */
+.hex-brick   { background-color: #b55332; }   /* ladrillo terracota */
+.hex-stone   { background-color: #7d7d7d; }   /* piedra gris */
+
 /* LOGO */
 .logo {
     position: relative;
@@ -98,7 +106,7 @@ body {
 .content-section {
     position: relative;
     z-index: 20;
-    background-color: #f5ede4;
+    /* background-color: #f5ede4; */
     padding: 5rem 1.5rem;
 }
 
