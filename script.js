@@ -254,6 +254,9 @@ function setupHoverTilt() {
 
         const sector = getHexSector(dx, dy);
         applyHexSectorEffects(sector, activeHex, activeWrap);
+
+        // modificar velocidad de animación
+        activeHex.style.transition = "transform .2s ease-out";
     })
 
     container.addEventListener("mouseout", (e) => {
