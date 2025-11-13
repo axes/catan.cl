@@ -1,0 +1,238 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5ede4;
+    color: #3d3226;
+}
+
+/* HERO */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#hexagon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* HEXÁGONOS POINTY-TOP */
+.hexagon {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+
+    clip-path: polygon(50% 0%,
+            93% 25%,
+            93% 75%,
+            50% 100%,
+            7% 75%,
+            7% 25%);
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* FILAS */
+.first-row, .second-row, .third-row {
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+}
+
+/* Mantén tus offsets visuales */
+.first-row { top: -100px; }
+.second-row { top: -350px; }
+.third-row  { top: -600px; }
+
+/* COLORES POR DEFECTO (se reemplazarán por texturas) */
+.color-stone {
+    background-color: #888;
+}
+
+/* LOGO */
+.logo {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.logo h1 {
+    font-size: 6rem;
+    color: #3d3226;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.logo p {
+    font-size: 1.5rem;
+    color: #6b5d4f;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* CONTENIDO */
+.content-section {
+    position: relative;
+    z-index: 20;
+    background-color: #f5ede4;
+    padding: 5rem 1.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.content-section h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #3d3226;
+    margin-bottom: 1.5rem;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #6b5d4f;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d9cfc0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-icon.wood {
+    background-color: #4a7c59;
+}
+
+.card-icon.wheat {
+    background-color: #f4d03f;
+}
+
+.card-icon.brick {
+    background-color: #d2691e;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #3d3226;
+    margin-bottom: 0.75rem;
+}
+
+.card p {
+    color: #6b5d4f;
+}
+
+/* CTA Button */
+.cta-button {
+    background-color: #8b7355;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background-color: #73603f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hexagon {
+        width: 7rem;
+        height: 8rem;
+    }
+
+    .logo h1 {
+        font-size: 3.5rem;
+    }
+
+    .logo p {
+        font-size: 1.125rem;
+    }
+
+    .content-section h2 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hexagon {
+        width: 13rem;
+        height: 14rem;
+    }
+
+    .logo h1 {
+        font-size: 9rem;
+    }
+
+    .logo p {
+        font-size: 2rem;
+    }
+}
