@@ -12,6 +12,9 @@
     <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
 
+    <link rel="stylesheet" href="assets/css/devir-footer.css">
+    <script defer src="assets/js/devir-footer.js"></script>
+
 </head>
 
 <body>
@@ -123,6 +126,9 @@
             </div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+    <?php include 'components/devir-footer.php'; ?>
 
     <script src="script.js"></script>
 </body>
