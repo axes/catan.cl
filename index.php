@@ -19,6 +19,10 @@
 
 <body>
 
+    <div id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- HERO -->
     <section class="hero-section">
         <div id="hexagon-container"></div>

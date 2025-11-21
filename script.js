@@ -200,12 +200,19 @@ const TILE_TEXTURES = {
 };
 
 function applyTexture(hex, type) {
-    if (!TILE_TEXTURES[type]) return;
+    hex.classList.add("loading");
 
     const variants = TILE_TEXTURES[type];
     const file = variants[Math.floor(Math.random() * variants.length)];
+    const url = `assets/img/tiles/${file}`;
 
-    hex.style.backgroundImage = `url('assets/img/tiles/${file}')`;
+    const img = new Image();
+    img.src = url;
+
+    img.onload = () => {
+        hex.style.backgroundImage = `url('${url}')`;
+        hex.classList.remove("loading");
+    };
 }
 
 
@@ -324,6 +331,16 @@ window.addEventListener('scroll', () => {
 window.addEventListener('resize', () => {
     centerX = window.innerWidth / 2;
     centerY = window.innerHeight / 2;
+});
+
+window.addEventListener('load', () => {
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.opacity = "0";
+        loader.style.transition = "opacity 0.4s ease";
+
+        setTimeout(() => loader.remove(), 400);
+    }
 });
 
 
