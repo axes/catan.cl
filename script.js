@@ -190,13 +190,22 @@ function createThirdRow() {
 //   TEXTURAS DE LOSETAS CATAN
 // -------------------------------
 
+// const TILE_TEXTURES = {
+//     wood: ["forest_1.png", "forest_2.png", "forest_3.png", "forest_4.png"],
+//     wheat: ["fields_1.png", "fields_2.png", "fields_3.png", "fields_4.png"],
+//     brick: ["hills_1.png", "hills_2.png"],
+//     stone: ["mountains_1.png", "mountains_2.png", "mountains_3.png", "mountains_4.png"],
+//     sheep: ["pasture_1.png", "pasture_2.png", "pasture_3.png", "pasture_4.png"],
+//     desert: ["desert_1.png"]
+// };
+
 const TILE_TEXTURES = {
-    wood: ["forest_1.png", "forest_2.png", "forest_3.png", "forest_4.png"],
-    wheat: ["fields_1.png", "fields_2.png", "fields_3.png", "fields_4.png"],
-    brick: ["hills_1.png", "hills_2.png"],
-    stone: ["mountains_1.png", "mountains_2.png", "mountains_3.png", "mountains_4.png"],
-    sheep: ["pasture_1.png", "pasture_2.png", "pasture_3.png", "pasture_4.png"],
-    desert: ["desert_1.png"]
+    wood: ["forest_1.webp", "forest_2.webp", "forest_3.webp", "forest_4.webp"],
+    wheat: ["fields_1.webp", "fields_2.webp", "fields_3.webp", "fields_4.webp"],
+    brick: ["hills_1.webp", "hills_2.webp", "hills_3.webp"],
+    stone: ["mountains_1.webp", "mountains_2.webp", "mountains_3.webp", "mountains_4.webp"],
+    sheep: ["pasture_1.webp", "pasture_2.webp", "pasture_3.webp", "pasture_4.webp"],
+    desert: ["desert_1.webp"]
 };
 
 function applyTexture(hex, type) {
