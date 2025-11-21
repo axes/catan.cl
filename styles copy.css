@@ -16,8 +16,6 @@ body {
     position: relative;
     height: 100vh;
     overflow: hidden;
-
-    background: #ac121e;
 }
 
 #hexagon-container {
@@ -50,12 +48,14 @@ body {
     width: 500px;
     height: 500px;
 
-    clip-path: polygon(50% 0%,
-            93% 25%,
-            93% 75%,
-            50% 100%,
-            7% 75%,
-            7% 25%);
+    clip-path: polygon(
+        50% 0%,
+        93% 25%,
+        93% 75%,
+        50% 100%,
+        7% 75%,
+        7% 25%
+    );
 
     background-size: cover;
     background-position: center;
@@ -83,9 +83,11 @@ body {
     pointer-events: none;
 
     /* luz fuerte pero definida */
-    background: radial-gradient(circle at var(--light-x) var(--light-y),
-            rgba(255, 255, 255, 0.15),
-            rgba(255, 255, 255, 0) 48%);
+    background: radial-gradient(
+        circle at var(--light-x) var(--light-y),
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0) 48%
+    );
 
     transition: background 0.12s ease-out;
 }
@@ -149,34 +151,53 @@ body {
     top: -600px;
 }
 
-/* TEXTURAS REALES — ahora serán asignadas por JS */
-.hex-desert,
-.hex-wood,
-.hex-wheat,
-.hex-sheep,
-.hex-brick,
-.hex-stone {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* COLORES POR DEFECTO (se reemplazarán por texturas) */
+.color-stone {
+    background-color: #888;
 }
+
+/* TEXTURAS SIMULADAS CON COLORES PROVISORIOS */
+.hex-desert {
+    background-color: #e4d6b0;
+}
+
+/* arena pálida */
+.hex-wood {
+    background-color: #2f6b3f;
+}
+
+/* bosque oscuro */
+.hex-wheat {
+    background-color: #ffce45;
+}
+
+/* trigo dorado */
+.hex-sheep {
+    background-color: #8cd19c;
+}
+
+/* pradera verde */
+.hex-brick {
+    background-color: #b55332;
+}
+
+/* ladrillo terracota */
+.hex-stone {
+    background-color: #7d7d7d;
+}
+
 
 /* LOGO */
 .logo {
     position: relative;
-    z-index: 5;
-    /* sigue visible, pero no tan alto */
+    z-index: 5;         /* sigue visible, pero no tan alto */
     text-align: center;
     animation: fadeIn 1s ease-out;
 
-    pointer-events: none;
-    /* EL LOGO NO BLOQUEA */
-
+    pointer-events: none;       /* EL LOGO NO BLOQUEA */
 }
-
 .logo * {
-    pointer-events: none;
-    /* todo lo interno deja pasar el mouse */
+    pointer-events: none;       /* todo lo interno deja pasar el mouse */
 }
 
 .logo-svg svg {

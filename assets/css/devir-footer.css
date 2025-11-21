@@ -16,7 +16,10 @@
     justify-content: center;
     cursor: pointer;
     transition: height 0.3s ease, width 0.3s ease;
-    border-radius: 6px 0px 0px 0px;
+    border-radius: 6px 6px 0px 0px;
+
+    margin-left: 10px;
+
 }
 
 #devir-toggle img {
@@ -28,9 +31,12 @@
 #devir-panel {
     position: absolute;
     bottom: 0;
-    left: 64px; /* parte justo a la derecha del cuadrado */
-    width: 0;   /* empieza cerrado horizontalmente */
-    height: 300px; /* altura final */
+    left: 64px;
+    /* parte justo a la derecha del cuadrado */
+    width: 0;
+    /* empieza cerrado horizontalmente */
+    height: 300px;
+    /* altura final */
     overflow: hidden;
 
     background: #1a1a1a;
@@ -41,6 +47,7 @@
 
     display: flex;
     align-items: flex-start;
+
 }
 
 /* BOTÓN DE CERRAR */
@@ -57,7 +64,8 @@
 }
 
 #devir-close:hover {
-    color: #d2691e; /* tono cálido estilo Catan */
+    color: #d2691e;
+    /* tono cálido estilo Catan */
 }
 
 /* CONTENIDO INTERNO */

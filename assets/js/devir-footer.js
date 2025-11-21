@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const updatePanelWidth = () => {
         if (!expanded) return;
-        const width = Math.max(0, document.documentElement.clientWidth - 64);
+        const width = Math.max(0, document.documentElement.clientWidth - 64 - 10);
         panel.style.width = width + "px";
     };
 

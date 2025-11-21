@@ -15,6 +15,9 @@ function createHex(type = "stone") {
     hex.style.width = HEX_W + "px";
     hex.style.height = HEX_H + "px";
 
+    // APLICAR TEXTURA REAL
+    applyTexture(hex, type);
+
     // borde 3D
     const edge = document.createElement("div");
     edge.className = "edge";
@@ -181,6 +184,28 @@ function createThirdRow() {
         wrap.style.top = `${offsetY}px`;
         row.appendChild(wrap);
     }
+}
+
+// -------------------------------
+//   TEXTURAS DE LOSETAS CATAN
+// -------------------------------
+
+const TILE_TEXTURES = {
+    wood: ["forest_1.png", "forest_2.png", "forest_3.png", "forest_4.png"],
+    wheat: ["fields_1.png", "fields_2.png", "fields_3.png", "fields_4.png"],
+    brick: ["hills_1.png", "hills_2.png"],
+    stone: ["mountains_1.png", "mountains_2.png", "mountains_3.png", "mountains_4.png"],
+    sheep: ["pasture_1.png", "pasture_2.png", "pasture_3.png", "pasture_4.png"],
+    desert: ["desert_1.png"]
+};
+
+function applyTexture(hex, type) {
+    if (!TILE_TEXTURES[type]) return;
+
+    const variants = TILE_TEXTURES[type];
+    const file = variants[Math.floor(Math.random() * variants.length)];
+
+    hex.style.backgroundImage = `url('assets/img/tiles/${file}')`;
 }
 
 
