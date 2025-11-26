@@ -1,0 +1,226 @@
+/* Sección larga (scroll) */
+.catan-box-section {
+    position: relative;
+    height: 300vh;
+    background: #05090f;
+    color: #fff;
+}
+
+/* Sticky container */
+.catan-box-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3D Scene */
+.catan-box-scene {
+    --w: 300px;
+    /* width */
+    --h: 70px;
+    /* wall height */
+    --d: 300px;
+    /* depth */
+
+    width: var(--w);
+    height: var(--w);
+    /* matches top (300px) */
+    perspective: 1200px;
+}
+
+/* 3D Object */
+.catan-box-3d {
+    width: var(--w);
+    height: var(--w);
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+
+    /* NUEVO: origen centrado correctamente */
+    transform-origin: center center;
+
+    /* NUEVO: centrado real sin romper perspectiva */
+    transform: translate(-50%, -50%);
+}
+
+/* ============================================================
+   FACES (todas absolutamente posicionadas y homogéneas)
+============================================================ */
+
+.face {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+/* ============================================================
+   TAPA SUPERIOR (solo para caja exterior)
+============================================================ */
+.face.top {
+    position: absolute;
+    width: var(--w);
+    height: var(--d);
+    background: #fffb00;
+    transform: translateY(calc(-1 * (var(--d)/2 - var(--h)/2))) rotateX(90deg);
+    transform-origin: center center;
+
+}
+
+
+
+/* Esto produce exactamente: translateY(-115px) */
+
+/* FRONT */
+.face.front {
+    width: var(--w);
+    height: var(--h);
+    background: #2980b9;
+    transform: translateY(calc(var(--h)/2)) translateZ(calc(var(--d)/2));
+}
+
+/* BACK */
+.face.back {
+    width: var(--w);
+    height: var(--h);
+    background: #c0392b;
+    transform: translateY(calc(var(--h)/2)) translateZ(calc(-1 * var(--d)/2)) rotateY(180deg);
+}
+
+/* LEFT */
+.face.left {
+    width: var(--d);
+    height: var(--h);
+    background: #555;
+    transform: rotateY(90deg) translateZ(calc(var(--w)/2)) translateY(calc(var(--h)/2));
+}
+
+/* RIGHT */
+.face.right {
+    width: var(--d);
+    height: var(--h);
+    background: #777;
+    transform: rotateY(-90deg) translateZ(calc(var(--w)/2)) translateY(calc(var(--h)/2));
+}
+
+/* ============================================================
+   Debug HUD
+============================================================ */
+.catan-box-debug {
+    position: fixed;
+    left: 5rem;
+    bottom: 1rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: 4px;
+    font-size: 13px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #0ff;
+    pointer-events: none;
+    z-index: 999;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* ===============================================
+   CAJA INTERIOR — PARAMÉTRICA Y ALINEADA
+   =============================================== */
+/* ===============================================
+   CAJA INTERIOR — alineada a la caja exterior
+   =============================================== */
+
+.inner-box-3d {
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    top: 50%;
+    left: 50%;
+
+    transform-style: preserve-3d;
+    transform-origin: center center;
+
+    /* Tamaño un poco menor */
+    --w-inner: calc(var(--w) - 6px);
+    --h-inner: calc(var(--h) - 4px);
+    --d-inner: calc(var(--d) - 6px);
+
+    width: var(--w-inner);
+    height: var(--w-inner);
+
+    /* Centrar dentro del cubo exterior */
+    /* transform: translate(-50%, -50%) translateZ(-2px); */
+    transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg);
+    /* NUEVO → empuja la caja interior hacia adentro */
+
+
+}
+
+
+/* FRONT interior */
+.inner-face.front {
+    position: absolute;
+    width: var(--w-inner);
+    height: var(--h-inner);
+    background: #1f618d;
+
+    transform:
+        translateY(calc(var(--h-inner)/2)) translateZ(calc(var(--d-inner)/2));
+}
+
+/* BACK interior */
+.inner-face.back {
+    position: absolute;
+    width: var(--w-inner);
+    height: var(--h-inner);
+    background: #922b21;
+
+    transform:
+        translateY(calc(var(--h-inner)/2)) translateZ(calc(-1 * var(--d-inner)/2)) rotateY(180deg);
+}
+
+/* LEFT interior */
+.inner-face.left {
+    position: absolute;
+    width: var(--d-inner);
+    height: var(--h-inner);
+    background: #444;
+
+    transform:
+        rotateY(90deg) translateZ(calc(var(--w-inner)/2)) translateY(calc(var(--h-inner)/2));
+}
+
+/* RIGHT interior */
+.inner-face.right {
+    position: absolute;
+    width: var(--d-inner);
+    height: var(--h-inner);
+    background: #555;
+
+    transform:
+        rotateY(-90deg) translateZ(calc(var(--w-inner)/2)) translateY(calc(var(--h-inner)/2));
+}
+
+/* ============================================================
+   BASE DE LA CAJA INTERIOR — sin top
+============================================================ */
+
+/* QUITAMOS LA TAPA INTERIOR */
+.inner-face.top {
+    display: none !important;
+}
+
+/* BOTTOM interior alineado */
+.inner-face.bottom {
+    position: absolute;
+    width: var(--w-inner);
+    height: var(--d-inner);
+    background: #1cbd44;
+
+    /* Mantener orientación */
+    transform-origin: center center;
+
+    /* Fondo de la caja inferior  */
+    transform:
+        translateY(calc(-1 * (var(--h-inner)) + 18px)) rotateX(90deg);
+}

@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="assets/css/devir-footer.css">
     <script defer src="assets/js/devir-footer.js"></script>
 
+    <link rel="stylesheet" href="assets/css/catan-box.css">
+    <script defer src="assets/js/catan-box.js"></script>
+
 </head>
 
 <body>
@@ -94,6 +97,41 @@
                     </path>
                 </svg>
             </div>
+        </div>
+    </section>
+
+    <section id="catan-box-section" class="catan-box-section">
+        <div id="catan-box" class="catan-box-sticky">
+            <div class="catan-box-scene">
+
+                <div class="catan-box-3d">
+
+                    <!-- Caras exteriores -->
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+
+                    <!-- Caja interior contenida dentro de la exterior -->
+                    <div class="inner-box-3d">
+                        <div class="inner-face top"></div>
+                        <div class="inner-face front"></div>
+                        <div class="inner-face back"></div>
+                        <div class="inner-face left"></div>
+                        <div class="inner-face right"></div>
+                        <div class="inner-face bottom"></div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <!-- Debug de progreso -->
+            <div id="catan-box-debug" class="catan-box-debug"></div>
         </div>
     </section>
 
