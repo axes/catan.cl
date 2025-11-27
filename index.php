@@ -124,6 +124,25 @@
                         <div class="inner-face bottom"></div>
                     </div>
 
+                    <!-- Componentes que salen desde la caja -->
+                    <div id="catan-components">
+                        <div class="catan-piece p1"></div>
+                        <div class="catan-piece p2"></div>
+                        <div class="catan-piece p3"></div>
+                        <div class="catan-piece p4"></div>
+                        <div class="catan-piece p5"></div>
+                        <div class="catan-piece p6"></div>
+                    </div>
+
+                    <div id="catan-component-labels">
+                        <div class="comp-label l1">Hexágonos de Terreno</div>
+                        <div class="comp-label l2">Cartas de Desarrollo</div>
+                        <div class="comp-label l3">Cartas de Recursos</div>
+                        <div class="comp-label l4">Fichas de Número</div>
+                        <div class="comp-label l5">Piezas de Poblados</div>
+                        <div class="comp-label l6">Piezas de Caminos</div>
+                    </div>
+
                 </div>
 
 
@@ -133,6 +152,7 @@
             <!-- Debug de progreso -->
             <div id="catan-box-debug" class="catan-box-debug"></div>
         </div>
+
     </section>
 
     <!-- CONTENIDO -->

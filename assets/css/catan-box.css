@@ -1,16 +1,17 @@
 /* Sección larga (scroll) */
 .catan-box-section {
     position: relative;
-    height: 300vh;
-    background: #05090f;
+    height: 600vh; /* antes 300vh */
+    background: #ac121e;
     color: #fff;
+    z-index: -10; /* detrás de todo  para poder ver las losetas */
 }
 
 /* Sticky container */
 .catan-box-sticky {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 120vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +29,7 @@
     width: var(--w);
     height: var(--w);
     /* matches top (300px) */
-    perspective: 1200px;
+    perspective: 1300px;
 }
 
 /* 3D Object */
@@ -223,4 +224,81 @@
     /* Fondo de la caja inferior  */
     transform:
         translateY(calc(-1 * (var(--h-inner)) + 18px)) rotateX(90deg);
+}
+
+/* ===========================================================
+   COMPONENTES EMERGENTES DE LA CAJA
+=========================================================== */
+
+#catan-components {
+    position: absolute;
+    top: calc(50% + 40px);  /* prueba 40px en vez de 80px */
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    perspective: 800px;
+}
+
+.catan-piece {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: 50% 150%;
+    border-radius: 6px;
+}
+
+/* Colores provisionales */
+.p1 { background: #c0392b; }
+.p2 { background: #27ae60; }
+.p3 { background: #2980b9; }
+.p4 { background: #f1c40f; }
+.p5 { background: #8e44ad; }
+.p6 { background: #e67e22; }
+
+
+/* ===========================================================
+   TITULO PRINCIPAL STICKY
+=========================================================== */
+.catan-title-sticky {
+    position: sticky;
+    top: 8vh;
+    z-index: 3000;
+    text-align: center;
+    width: 100%;
+    font-size: 42px;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+
+
+/* ===========================================================
+   ETIQUETAS DE COMPONENTES
+=========================================================== */
+#catan-component-labels {
+    position: absolute;
+    top: calc(50% + 80px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 3000;
+}
+
+.comp-label {
+    position: absolute;
+    padding: 0.5rem 1rem;
+    background: rgba(0,0,0,0.65);
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
